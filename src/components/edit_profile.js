@@ -10,7 +10,6 @@ function Edit_Profile() {
     return (
         <div class="container d-flex justify-content-center ">
             <div class="profile_card p-3 py-4 profile_div">
-//         Helloo JIII 
                 <div class="text-center"> <img src="https://i.imgur.com/stD0Q19.jpg" width="150" class="rounded-circle profile_image" />
                 <Container className="search_bar">
                                 <input type="text" placeholder="Maria Smith" name="search" />
