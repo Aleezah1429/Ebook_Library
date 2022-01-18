@@ -4,8 +4,8 @@ import MyCard from "./card";
 function Home() {
     return (
         <div>
-        <GenreCard/>
-        <MyCard heading="Sepecially made for Tashanam"/>
+            <GenreCard/>
+            <MyCard heading="Sepecially made for Tashanam"/>
         </div>
     )
 }
