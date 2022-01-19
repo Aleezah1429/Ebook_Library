@@ -7,13 +7,11 @@ import {
   MutedLink,
   SubmitButton,
   ErrorMsg,
-  InfoMsg
+  SuccessMsg
 } from "./common";
 import { Marginer } from "../marginer";
 import { AccountContext } from "./accountContext";
 
-// For Alert
-import { Alert } from 'react-bootstrap'
 
 export function SignupForm(props) {
   const { switchToSignin } = useContext(AccountContext);
@@ -26,6 +24,7 @@ export function SignupForm(props) {
   const {
     handleSignup,
     emailorPassError,
+    successfullySignup,
 
   } = props;
 
@@ -57,11 +56,15 @@ export function SignupForm(props) {
         {/* <ErrorMsg><p>{emailError}</p></ErrorMsg> */}
         <Input type="password" placeholder="Password" value={Spassword} onChange={(e) => setSPassword(e.target.value)} />
         {/* <ErrorMsg><p>{passwordError}</p></ErrorMsg> */}
-        {emailorPassError ?
+      </FormContainer>
+      {emailorPassError ?
           <ErrorMsg><p>Please Enter the correct Email or Password</p></ErrorMsg>
           :
           null}
-      </FormContainer>
+        {successfullySignup ?
+          <SuccessMsg><p>Successfully Signup</p></SuccessMsg>
+          :
+          null}
       <Marginer direction="vertical" margin={10} />
       <SubmitButton type="submit" onClick={ShandleSignup}>Signup</SubmitButton>
       <Marginer direction="vertical" margin="1em" />
