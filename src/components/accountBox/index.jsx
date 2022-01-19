@@ -178,24 +178,6 @@ export function AccountBox(props) {
     }).catch((error) => {
       console.error(error);
     });
-
-    // console.log("LLLL",email,password)
-    // clearErrors();
-    // fire
-    //   .auth()
-    //   .signIntWithEmailAndPassword(email, password)
-    //   .catch((err) => {
-    //     switch (err.code) {
-    //       case "auth/invalid-email":
-    //       case "auth/user-disabled":
-    //       case "auth/user-not-found":
-    //         setEmailError(err.message);
-    //         break;
-    //       case "auth/wrong-password":
-    //         setPasswordError(err.message);
-    //         break;
-    //     }
-    //   });
   };
 
   // Firebase Database Write
@@ -225,26 +207,6 @@ export function AccountBox(props) {
     )
 
   }
-
-  // const handleLogout = () => {
-  //   fire.auth().signOut();
-  // }
-
-  // const authListener = () => {
-  //   fire.auth().onAuthStateChanged((user) => {
-  //     if (user) {
-  //       clearInputs();
-  //       setUser(user);
-  //     }
-  //     else {
-  //       setUser("");
-  //     }
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   authListener();
-  // }, [])
 
   // Login
   const Login = () => {
@@ -292,20 +254,6 @@ export function AccountBox(props) {
       </div>
     );
   }
-
-  // Firebase Database Read
-  // const dbRef = ref(getDatabase());
-  // get(child(dbRef, `users/${email}`)).then((snapshot) => {
-  //   if (snapshot.exists()) {
-  //     console.log(snapshot.val());
-  //   } else {
-  //     console.log("No data available");
-  //   }
-  // }).catch((error) => {
-  //   console.error(error);
-  // });
-
-
 
   return (
     <AccountContext.Provider value={contextValue}>
