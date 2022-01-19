@@ -114,7 +114,6 @@ export function AccountBox(props) {
 
 
   // Auth
-  // const [user, setUser] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -151,17 +150,6 @@ export function AccountBox(props) {
 
   const contextValue = { switchToSignup, switchToSignin };
 
-  // Auth
-  // const clearInputs = () => {
-  //   setEmail('');
-  //   setPassword('');
-  // }
-
-  // const clearErrors = () => {
-  //   setEmailError('');
-  //   setPasswordError('');
-  // }
-
   const handleLogin = async () => {
     var getLemail = await localStorage.getItem("Lemail")
     var getLpassword = await localStorage.getItem("Lpassword")
@@ -174,7 +162,6 @@ export function AccountBox(props) {
       if (snapshot.exists()) {
         console.log("loginSnap", snapshot.val());
         if (getLemail == snapshot.val().email && getLpassword == snapshot.val().password) {
-          // alert("Successfully Signin")
           setSuccesfullySignin(true)
           setInterval(()=>{
             setSuccesfullySignin(false)
@@ -182,12 +169,10 @@ export function AccountBox(props) {
           )
         }
         else {
-          // alert("Incorrect fields")
           setEmailorPassError(true)
         }
       } else {
         // console.log("No data available");
-        // alert("Please Signup first");
         setsignupError(true)
       }
     }).catch((error) => {
