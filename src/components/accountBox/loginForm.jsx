@@ -48,11 +48,8 @@ export default function LoginForm(props) {
     <BoxContainer>
       {/* {console.log("myaleezah", props.email)} */}
       <FormContainer>
-        {/* //Input my L wali states ainge */}
         <Input type="email" placeholder="Email" value={Lemail} onChange={(e) => setLEmail(e.target.value)} />
-        {/* <ErrorMsg><p>{emailError}</p></ErrorMsg> */}
         <Input type="password" placeholder="Password" value={Lpassword} onChange={(e) => setLPassword(e.target.value)} />
-        {/* <ErrorMsg><p>{passwordError}</p></ErrorMsg> */}
       </FormContainer>
       {emailorPassError ?
           <ErrorMsg><p>Please Enter the correct Email or Password</p></ErrorMsg>
@@ -67,7 +64,6 @@ export default function LoginForm(props) {
           :
           null}
       <Marginer direction="vertical" margin={10} />
-      {/* <MutedLink href="#">{props.email}</MutedLink> */}
       <Marginer direction="vertical" margin="1.6em" />
       <SubmitButton type="submit" onClick={LhandleLogin}>Signin</SubmitButton>
       <Marginer direction="vertical" margin="1em" />
