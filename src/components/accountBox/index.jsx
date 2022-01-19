@@ -4,12 +4,7 @@ import LoginForm from "./loginForm";
 import { motion } from "framer-motion";
 import { AccountContext } from "./accountContext";
 import { SignupForm } from "./signupForm";
-// For Alert
-import { Alert } from 'react-bootstrap'
 
-//  Firebase
-import fire from "../../firebase";
-import Hero from "./Hero";
 
 // Firebase Database
 import { getDatabase, ref, set, child, get } from "firebase/database";
@@ -126,6 +121,7 @@ export function AccountBox(props) {
   const [emailorPassError, setEmailorPassError] = useState(false);
   const [signupError, setsignupError] = useState(false);
   const [successfullySignin, setSuccesfullySignin] = useState(false);
+  const [successfullySignup, setSuccesfullySignup] = useState(false);
 
 
 
@@ -174,7 +170,7 @@ export function AccountBox(props) {
 
     const dbRef = ref(getDatabase());
     console.log("userID", userId)
-    get(child(dbRef, `users/${userId[0]}`)).then((snapshot) => {
+    get(child(dbRef, `Reader/${userId[0]}`)).then((snapshot) => {
       if (snapshot.exists()) {
         console.log("loginSnap", snapshot.val());
         if (getLemail == snapshot.val().email && getLpassword == snapshot.val().password) {
@@ -220,7 +216,7 @@ export function AccountBox(props) {
   // Firebase Database Write
   function writeUserData(userId, name, email, password) {
     const db = getDatabase();
-    set(ref(db, 'users/' + userId), {
+    set(ref(db, 'Reader/' + userId), {
       name: name,
       email: email,
       password: password
@@ -237,21 +233,12 @@ export function AccountBox(props) {
     var getSpassword = await localStorage.getItem("Spassword")
     var userId = getSemail.split("@")
     writeUserData(userId[0], getSname, getSemail, getSpassword);
+    setSuccesfullySignup(true)
+    setInterval(()=>{
+      setSuccesfullySignup(false)
+    }, 3000
+    )
 
-    // fire
-    //   .auth()
-    //   .createUserWithEmailAndPassword(email, password)
-    //   .catch((err) => {
-    //     switch (err.code) {
-    //       case "auth/email-already-in-use":
-    //       case "auth/invalid-email":
-    //         setEmailError(err.message);
-    //         break;
-    //       case "auth/wrong-password":
-    //         setPasswordError(err.message);
-    //         break;
-    //     }
-    //   });
   }
 
   // const handleLogout = () => {
@@ -314,6 +301,7 @@ export function AccountBox(props) {
           handleLogin={handleLogin}
           handleSignup={handleSignup}
           emailorPassError={emailorPassError}
+          successfullySignup={successfullySignup}
         />
         {/* } */}
       </div>
