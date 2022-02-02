@@ -53,7 +53,9 @@ export function SignupForm(props) {
         {console.log(Spassword)} */}
         <Input type="text" placeholder="Full Name" value={Sname} onChange={(e) => setSName(e.target.value)} />
         <Input type="email" placeholder="Email" value={Semail} onChange={(e) => setSEmail(e.target.value)} />
+        {/* <ErrorMsg><p>{emailError}</p></ErrorMsg> */}
         <Input type="password" placeholder="Password" value={Spassword} onChange={(e) => setSPassword(e.target.value)} />
+        {/* <ErrorMsg><p>{passwordError}</p></ErrorMsg> */}
       </FormContainer>
       {emailorPassError ?
           <ErrorMsg><p>Please Enter the correct Email or Password</p></ErrorMsg>
