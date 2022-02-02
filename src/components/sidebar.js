@@ -8,7 +8,7 @@ import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarConten
 
 //icons from react icons
 import { FaList, FaRegHeart, FaSearch } from "react-icons/fa";
-import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle, FiUser } from "react-icons/fi";
+import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle, FiUser,FiList } from "react-icons/fi";
 import { RiPencilLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
 import { SiApacheairflow } from "react-icons/si";
@@ -20,6 +20,7 @@ import "react-pro-sidebar/dist/css/styles.css";
 //components
 import Home from "./home";
 import Search from "./search";
+import Profile from "./profile";
 import Profile from "./profile";
 import styled from "styled-components";
 import { AccountBox } from "./accountBox";
@@ -72,6 +73,7 @@ function Sidenav() {
                                 <MenuItem icon={<FiUser />}><Link to="/profile">Profile</Link></MenuItem>
                                 <MenuItem icon={<FaSearch />}><Link to="/search">Search</Link></MenuItem>
                                 <MenuItem icon={<FaRegHeart />}><Link to="/favourite">Favourite</Link></MenuItem>
+                                <MenuItem icon={<FiList />}><Link to="/recommandation">Recommendation</Link></MenuItem>
                                 <MenuItem icon={<BiCog />}><Link to="/setting">Settings</Link></MenuItem>
                             </Menu>
                         </SidebarContent>
@@ -88,6 +90,8 @@ function Sidenav() {
                         <Route path="/home" element={<Home/>}/>
                         <Route path="/profile" element={<Profile/>} />
                         <Route path="/search" element={<Search/>} />
+                        <Route path="/recommandation" element={<Recommendation/>} />
+                        <Route path="/favourite" element={<Favourite/>} />
                         <Route path="/setting" element={<AccountBox className = "AuthContainer" />} />
                       
                     </Routes>
