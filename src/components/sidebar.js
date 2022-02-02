@@ -9,7 +9,7 @@ import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarConten
 
 //icons from react icons
 import { FaRegHeart, FaSearch } from "react-icons/fa";
-import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle, FiUser,FiList } from "react-icons/fi";
+import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle, FiUser } from "react-icons/fi";
 import { SiApacheairflow } from "react-icons/si";
 import { GiAbstract050 } from "react-icons/gi";
 
@@ -59,7 +59,7 @@ function Sidenav({childToParent}) {
                             <MenuItem icon={<FiUser />}><Link to="/profile">Profile</Link></MenuItem>
                             <MenuItem icon={<FaSearch />}><Link to="/search">Search</Link></MenuItem>
                             <MenuItem icon={<FaRegHeart />}><Link to="/favourite">Favourite</Link></MenuItem>
-                            <MenuItem icon={<FiList />}><Link to="/recommandation">Recommandation</Link></MenuItem>
+                            <MenuItem icon={<FaRegHeart />}><Link to="/recommandation">Recommandation</Link></MenuItem>
                         </Menu>
                     </SidebarContent>
                     <SidebarFooter>
