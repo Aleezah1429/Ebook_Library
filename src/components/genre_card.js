@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import fire from "../firebase";
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, CardGroup, Card, Row, Col, Container } from 'react-bootstrap';
 import test2 from "../assets/img/test_2.jpg";
@@ -11,9 +10,10 @@ function GenreCard() {
 
     // States for Genres Data
     const [genreData, setGenreData] = useState([]);
-
+    var getLemail =  localStorage.getItem("Lemail")
+    var userId = getLemail.split("@")
     // Store collection of book details in firestore
-    const ref = fire.firestore().collection("Genre").doc("Aleezah")
+    const ref = fire.firestore().collection("Genre").doc(userId)
 
     // Get Array of Genre From Database
     function getGenreData() {

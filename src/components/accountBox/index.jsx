@@ -8,6 +8,7 @@ import { SignupForm } from "./signupForm";
 
 // Firebase Database
 import { getDatabase, ref, set, child, get } from "firebase/database";
+import MyRouter from "../router";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -162,6 +163,15 @@ export function AccountBox(props) {
   //   setPasswordError('');
   // }
 
+  // function CallRouter(){
+  //   console.log("CALLING")
+  //   return(
+  //   <div>
+  //   <MyRouter/>
+  //   </div>
+  //   )
+  // }
+
   const handleLogin = async () => {
     var getLemail = await localStorage.getItem("Lemail")
     var getLpassword = await localStorage.getItem("Lpassword")
@@ -176,11 +186,14 @@ export function AccountBox(props) {
         if (getLemail == snapshot.val().email && getLpassword == snapshot.val().password) {
           // alert("Successfully Signin")
           setSuccesfullySignin(true)
-          window.location.href = "http://localhost:3000/home"
+          
           setInterval(()=>{
             setSuccesfullySignin(false)
           }, 3000
           )
+          // window.location.href = "http://localhost:3000/home"
+          props.child_To_Parent_login(true)
+        
         }
         else {
           // alert("Incorrect fields")

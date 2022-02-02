@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { AccountBox } from "./components/accountBox";
 import background from "../src/assets/img/bg.jpg";
 import Sidenav from './components/sidebar';
-import Genre_Asking from "./components/Genre_asking"
+import Router from "./components/router";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -28,9 +28,10 @@ function App() {
     // }}>
     //   <AccountBox />
     //  </AppContainer>
-    <div >
-      <Sidenav /> 
+    <div>
+    <Router/>
     </div>
+  
   );
 }
 

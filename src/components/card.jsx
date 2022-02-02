@@ -266,15 +266,35 @@ function MyCard({ heading }) {
 
 
 }
-  // const AddToFavourites=()=>{
-  //   fire
-  //   .firestore()
-  //   .collection("Feedback")
-  //   .doc("Aleezah")
-  //   .set({
-  //           Bookid:idBook,Rating:val
-  //   })
-  // }
+  const AddToFavourites=(id,name)=>{
+    // console.log("LLLLBJKBJKBJKBJ",id)
+    fire.firestore().collection("Favourite_Books").doc("Aleezah").get().then((snap)=>{
+      console.log("OOPOPOPOPO",snap.data().Books)
+      const arr = snap.data().Books
+      // const name = snap.data().BookName
+      
+          const singleObj = {id,name}
+      //    const newEntry = {IdBook,name}
+      //     // singleObj.push(JSON.stringify(newEntry))
+      arr.push(JSON.stringify(singleObj))
+      console.log("AKDKDNKSNDSDNND",arr)
+          fire
+          .firestore()
+          .collection("Favourite_Books")
+          .doc("Aleezah")
+          .update(
+            {Books:arr
+          })
+
+    })
+    // fire
+    // .firestore()
+    // .collection("Feedback")
+    // .doc("Aleezah")
+    // .set({
+    //         Bookid:idBook,Rating:val
+    // })
+  }
 
   const GiveRating=(rate)=>{
         
@@ -348,9 +368,10 @@ function MyCard({ heading }) {
                     <span
                       type="button"
                       onClick={() => {
-                        isFavourite == "heartcolor_1"
-                          ? setisFavourite("heartcolor_2")
-                          : setisFavourite("heartcolor_1");
+                        // isFavourite == "heartcolor_2"
+                        //   ? setisFavourite("heartcolor_1")
+                        //   : setisFavourite("heartcolor_2");
+                        AddToFavourites(data[idx].id,data[idx].BookName)
                       }}
                       // heart color will be ornge if it is present in database otherwise grey
                       className={isFavourite}
