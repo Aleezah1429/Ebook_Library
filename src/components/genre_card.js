@@ -39,18 +39,68 @@ function GenreCard() {
             <Row className="genra_greeting">Good morning</Row>
             <Row>
                 <CardGroup className="genre_card_container">
-                    {(genreData.map((i) => (
-                    i != "" ?
-                            <Card className="my_genre_card">
-                                {console.log("data", i)}
+//                     {(genreData.map((i) => (
+//                     i != "" ?
+//                             <Card className="my_genre_card">
+//                                 {console.log("data", i)}
 
-                                <Row>
-                                    <Col ><Card.Img variant="top" src={test2} className="genre_card_image" /></Col>
-                                    <Col className="genre_col_text">{i}</Col>
-                                </Row>
-                            </Card> : null
+//                                 <Row>
+//                                     <Col ><Card.Img variant="top" src={test2} className="genre_card_image" /></Col>
+//                                     <Col className="genre_col_text">{i}</Col>
+//                                 </Row>
+//                             </Card> : null
 
-                    )))}
+//                     )))}
+        
+         <Card className="my_genre_card ">
+                {/* genre_card_container */}
+                <Row>
+                    <Col ><Card.Img variant="top" src={test2} className="genre_card_image" /></Col>
+                    <Col className="genre_col_text">Action</Col>
+                </Row>
+            </Card>
+            <Card className="my_genre_card ">
+                {/* genre_card_container */}
+                <Row>
+                    <Col ><Card.Img variant="top" src={test2} className="genre_card_image" /></Col>
+                    <Col className="genre_col_text">Fantacy</Col>
+                </Row>
+            </Card>
+            <Card className="my_genre_card ">
+                {/* genre_card_container */}
+                <Row>
+                    <Col ><Card.Img variant="top" src={test2} className="genre_card_image" /></Col>
+                    <Col className="genre_col_text">Detective and Mystery</Col>
+                </Row>
+            </Card>
+            <Card className="my_genre_card ">
+                {/* genre_card_container */}
+                <Row>
+                    <Col ><Card.Img variant="top" src={test2} className="genre_card_image" /></Col>
+                    <Col className="genre_col_text">Horror</Col>
+                </Row>
+            </Card>
+            <Card className="my_genre_card ">
+                {/* genre_card_container */}
+                <Row>
+                    <Col ><Card.Img variant="top" src={test2} className="genre_card_image" /></Col>
+                    <Col className="genre_col_text"></Col>
+                </Row>
+            </Card>
+            <Card className="my_genre_card ">
+                {/* genre_card_container */}
+                <Row>
+                    <Col ><Card.Img variant="top" src={test2} className="genre_card_image" /></Col>
+                    <Col className="genre_col_text">Literary Fiction</Col>
+                </Row>
+            </Card>
+            <Card className="my_genre_card ">
+                {/* genre_card_container */}
+                <Row>
+                    <Col ><Card.Img variant="top" src={test2} className="genre_card_image" /></Col>
+                    <Col className="genre_col_text">Classics</Col>
+                </Row>
+            </Card>
                 </CardGroup>
             </Row>
         </Container>
