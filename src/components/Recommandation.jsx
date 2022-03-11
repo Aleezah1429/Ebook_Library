@@ -23,8 +23,8 @@ function Recommandation() {
         var items = []
         const myGenres = JSON.parse(localStorage.getItem("Genres"))
 
-        var getLemail = await localStorage.getItem("Lemail")
-        var userId = getLemail.split("@")
+        // var getLemail = await localStorage.getItem("Lemail")
+        // var userId = getLemail.split("@")
 
 
         for (var i=0 ; i<myGenres.length; i++ ) {
@@ -33,11 +33,12 @@ function Recommandation() {
                 .then((querySnapshot) => {
                     if (!querySnapshot.empty) {
                         querySnapshot.forEach((doc) => {
-                            console.log("HELO", doc.data().Genre);
+                            // console.log("HELO", doc.data().Genre);
                             if (doc.data().Genre == myGenres[i]) {
                                 items.push(doc.data())
+                                console.log("doc", doc.data())
                             }
-                            console.log("items", items)
+                            // console.log("items", items)
 
 
 
@@ -63,7 +64,7 @@ function Recommandation() {
     }
     useEffect(() => {
         getData();
-        console.log("sjbsxlsnxnslnxsdsbds", data)
+        // console.log("sjbsxlsnxnslnxsdsbds", data)
     }, [])
 
     return (

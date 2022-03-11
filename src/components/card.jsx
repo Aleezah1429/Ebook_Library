@@ -16,7 +16,7 @@ import { FaRegHeart } from "react-icons/fa";
 import fire from "../firebase";
 import readme from "..//assets/img/readme_logo_icon.png";
 
-function MyCard({ heading }) {
+function MyCard() {
 
   var getLemail = localStorage.getItem("Lemail")
   var userId = getLemail.split("@")
@@ -29,19 +29,13 @@ function MyCard({ heading }) {
   const ref = fire.firestore().collection("Books")
 
   const [data, setData] = useState([]);
-  const [loader, setLoader] = useState(true);
 
   const [isFavourite, setisFavourite] = useState("heartcolor_1");
 
   const [BookId, setBookId] = useState("");
 
 
-  // // Get Data of Books From Database
-  // function getData() { }
-
   useEffect(() => {
-    // getData();
-    // BookShow();
     ref.onSnapshot((querySnapshot) => {
       const items = [];
       fire
@@ -66,35 +60,6 @@ function MyCard({ heading }) {
     console.log(data);
   }, []);
 
-  // Book upload
-  // function BookShow() {
-    // Save url or download link
-    // const upload = () => {
-    //   if (image == null)
-    //     return;
-    //   setUrlImg("Getting Download Link...")
-
-    // Sending File to Firebase Storage
-    // storage.ref(`/images/${image.name}`).put(image)
-    // .on("state_changed", alert("success"), alert, () => {
-
-    // // Getting Link of Image
-    // fire
-    //   .storage()
-    //   .ref("Book_1")
-    //   .child("GFX_Mentor.jpg")
-    //   .getDownloadURL()
-    //   .then((url) => {
-    //     setUrlImg(url);
-    //     // console.log(url)
-    //   });
-
-
-
-
-    // }
-  // }
-
   function OpenPdf(id, pdf) {
     // Getting Link of Pdf
     window.open(pdf, '_blank');
@@ -104,34 +69,34 @@ function MyCard({ heading }) {
 
   }
   const AddToFavourites = (id, name) => {
+    let arr;
     // console.log("LLLLBJKBJKBJKBJ",id)
     fire.firestore().collection("Favourite_Books").doc(userId[0]).get().then((snap) => {
-      console.log("OOPOPOPOPO", snap.data().Books)
-      const arr = snap.data().Books
+      if (snap.data() == undefined) {
+        arr = []
+      }
+      else {
+        arr = snap.data().Books
+        // console.log("OOPOPOPOPO", snap.data().Books)
+      }
+      // const arr = snap.data().Books
       // const name = snap.data().BookName
 
       const singleObj = { id, name }
       //    const newEntry = {IdBook,name}
       //     // singleObj.push(JSON.stringify(newEntry))
       arr.push(JSON.stringify(singleObj))
-      console.log("AKDKDNKSNDSDNND", arr)
+      console.log("arr", arr)
       fire
         .firestore()
         .collection("Favourite_Books")
         .doc(userId[0])
-        .update(
+        .set(
           {
             Books: arr
           })
 
     })
-    // fire
-    // .firestore()
-    // .collection("Feedback")
-    // .doc("Aleezah")
-    // .set({
-    //         Bookid:idBook,Rating:val
-    // })
   }
 
   const GiveRating = (rate) => {
@@ -151,23 +116,11 @@ function MyCard({ heading }) {
         .firestore()
         .collection("Feedback")
         .doc(userId[0])
-        .update(
+        .set(
           {
             ratings: objs
           })
-      // for (var i=0;i<objs.length;i++){
-
-      // }
-      // console.log("snap",BookId)
     })
-    // fire
-    // .firestore()
-    // .collection("Feedback")
-    // .doc("Aleezah")
-    // .update(
-    //   {ratings:fire.
-    // })
-
 
   }
 
@@ -178,7 +131,6 @@ function MyCard({ heading }) {
   return (
     <Container>
       <Container>
-        {/* <Row className="card_greeting">{heading}</Row> */}
         <Row xs={1} sm={3} md={5} className="g-4">
           {console.log("MY", data)}
           {Array.from({ length: data.length }).map((_, idx) => (

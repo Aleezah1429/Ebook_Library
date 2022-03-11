@@ -78,14 +78,14 @@ export function SignupForm(props) {
 
   // Genre Asking
   // Store collection of book details in firestore
-  const ref = fire.firestore().collection("Books").doc("Book_1")
+  // const ref = fire.firestore().collection("Books").doc("Book_1")
 
   const [data, setData] = useState([]);
   const [loader, setLoader] = useState(true);
 
   // Get Data of Books From Database
   function getData() {
-    ref.onSnapshot((querySnapshot) => {
+    // ref.onSnapshot((querySnapshot) => {
       const items = []
       fire.firestore().collection("Books")
         .get()
@@ -93,9 +93,9 @@ export function SignupForm(props) {
           if (!querySnapshot.empty) {
             querySnapshot.forEach((doc) => {
               // console.log(doc.id, "=>", doc.data().Genre);
-              if (doc.data().Genre == "Action") {
-                console.log("Action Genre", doc.data())
-              }
+              // if (doc.data().Genre == "Action") {
+              //   console.log("Action Genre", doc.data())
+              // }
 
               items.push(doc.data())
             });
@@ -106,7 +106,7 @@ export function SignupForm(props) {
         });
       setData(items)
       setLoader(false)
-    })
+    // })
   }
 
   // For get genre from Action
@@ -146,19 +146,20 @@ export function SignupForm(props) {
   }
 
 
+ 
+  var getLemail =  localStorage.getItem("Semail")
+  var userId = getLemail.split("@")
 
   // For save genre from Checkbox
-  const SaveGenre = async (e) => {
-    // e.preventdefault()
-    var getLemail = await localStorage.getItem("Lemail")
-    var userId = getLemail.split("@")
-    console.log("fvrt genres",Action)
+  const SaveGenre = () => {
+
     // Store genre of book  in firestore
-    fire.firestore().collection("Genre").doc(userId[0]).set({
+    fire.firestore().collection("Genre").doc(userId[0]).update({
       Favourite_Genres: [Action, Fantasy, Mystery, ScienceFiction, Comedy, Teenagers]
     })
     
   }
+
 
 
   // Modal
@@ -166,25 +167,26 @@ export function SignupForm(props) {
     setIsOpen(true);
   }
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
-  }
+  // function afterOpenModal() {
+  //   // references are now sync'd and can be accessed.
+  //   // subtitle.style.color = '#f00';
+  // }
 
   function closeModal() {
-    setIsOpen(false);
+    console.log("CALLLLLLLLEEEEDDDDDD")
+    // setIsOpen(false);
   }
 
-  useEffect(() => {
-    getData();
-    console.log(Action)
-    console.log(Fantasy)
-    console.log(Mystery)
-    console.log(ScienceFiction)
-    console.log(Teenagers)
-    console.log(Comedy)
+  // useEffect(() => {
+  //   getData();
+  //   console.log(Action)
+  //   console.log(Fantasy)
+  //   console.log(Mystery)
+  //   console.log(ScienceFiction)
+  //   console.log(Teenagers)
+  //   console.log(Comedy)
 
-  }, [Action, Fantasy, Mystery, Comedy, ScienceFiction, Teenagers, Comedy])
+  // }, [Action, Fantasy, Mystery, Comedy, ScienceFiction, Teenagers, Comedy])
 
 useEffect(()=>{
   if(successfullySignup){
@@ -215,11 +217,11 @@ useEffect(()=>{
           :
           null}
         <Marginer direction="vertical" margin={10} />
-        <SubmitButton type="submit" onClick={ShandleSignup}>Signup</SubmitButton>
+        <SubmitButton  onClick={ShandleSignup}>Signup</SubmitButton>
         <Marginer direction="vertical" margin="1em" />
         <MutedLink href="#">
           Already have an account?
-          <BoldLink href="#" onClick={switchToSignin}>
+          <BoldLink  onClick={()=>switchToSignin}>
             Signin
           </BoldLink>
         </MutedLink>
@@ -229,17 +231,16 @@ useEffect(()=>{
 
 
 
-
       {/* Modal */}
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
+        // onAfterOpen={afterOpenModal}
+        onRequestClose={()=>closeModal()}
         style={customStyles}
         className="ModelContent"
       // contentLabel="Example Modal"
       >
-        <h3 className='cancel_icon' onClick={closeModal}><MdCancel /></h3>
+        <h3 className='cancel_icon' onClick={()=>closeModal()}><MdCancel /></h3>
 
         <div class="container d-flex">
           <div class="profile_card p-3 py-4 profile_div">
@@ -258,7 +259,7 @@ useEffect(()=>{
                       </Col>
                       <Col>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Science Fiction" onChange={handleScienceFiction} />
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Science fiction" onChange={handleScienceFiction} />
                           <label class="form-check-label" for="inlineCheckbox2">Fiction</label>
                         </div>
                       </Col>
@@ -274,13 +275,13 @@ useEffect(()=>{
                     <Row>
                       <Col>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Young Adult" onChange={handleTeenagers} />
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Young adult" onChange={handleTeenagers} />
                           <label class="form-check-label" for="inlineCheckbox1">Teenagers</label>
                         </div>
                       </Col>
                       <Col>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Fantacy" onChange={handleFantasy} />
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Fantasy" onChange={handleFantasy} />
                           <label class="form-check-label" for="inlineCheckbox2">Fantasy</label>
                         </div>
                       </Col>
