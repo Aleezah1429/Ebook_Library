@@ -174,7 +174,7 @@ function GenreAsk() {
                                     </Col>
                                     <Col>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Science Fiction" onChange={handleScienceFiction} />
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Science fiction" onChange={handleScienceFiction} />
                                             <label class="form-check-label" for="inlineCheckbox2">Science Fiction</label>
                                         </div>
                                     </Col>
@@ -194,13 +194,13 @@ function GenreAsk() {
                                 <Row>
                                     <Col>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Young Adult" onChange={handleTeenagers} />
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Young adult" onChange={handleTeenagers} />
                                             <label class="form-check-label" for="inlineCheckbox1">Teenagers</label>
                                         </div>
                                     </Col>
                                     <Col>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Fantacy" onChange={handleFantasy} />
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Fantasy" onChange={handleFantasy} />
                                             <label class="form-check-label" for="inlineCheckbox2">Fantasy</label>
                                         </div>
                                     </Col>
