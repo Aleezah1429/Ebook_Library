@@ -26,6 +26,18 @@ body{
     background-repeat: 'no-repeat';
 }
 @media screen and (min-width:380px) and (max-width: 580px) {
+    .ModelContent{
+        position: absolute;
+          top: 10% !important;
+          left: 17% !important;
+          right: 17% !important;
+          bottom: 10% !important;
+          height: 80%;
+          font-size: 80% !important;
+      }
+    .modal_text{
+        font-size: 200% !important;
+    }
     .my_card{
         width: 90% !important;
        
@@ -176,7 +188,7 @@ margin: 5% 0% 3% 3% !important;
     box-shadow: 2px 2px 5px rgb(177, 177, 177);
     transition: 0.2s;
     max-width: 250px;
-  margin: 1% 1% 2% 1% !important;
+    margin: 20% 1% 1% 1% !important;
     font-family: arial;
 }
 .stars_div{
@@ -375,15 +387,16 @@ margin: 5% 0% 3% 3% !important;
 
 /* For Profile */
 .profile_card {
-    margin-top: 5% !important;
+    margin-top: 5%;
 }
+
 .profile_card {
     color: #fff;
-    width: 70%;
+    width: 100%;
     border-radius: 10px;
     background: linear-gradient(145deg, rgb(1, 94, 66), rgb(2, 128, 90));
     box-shadow: 2px 2px 10px rgb(1, 94, 66);
-    border: none
+    border: none;
 }
 .profile_button {
     color: #fff;
@@ -409,6 +422,7 @@ margin: 5% 0% 3% 3% !important;
 .my_profile_row div h5{
     color: rgb(255, 187, 0) ;
     text-shadow: 1px 1px 2px #363636 ;
+    margin-bottom: 20px;
 }
 .qoute{
     font-style: italic ;
@@ -417,7 +431,29 @@ margin: 5% 0% 3% 3% !important;
     color: white;
     text-shadow: 2px 2px 5px black;
 }
-.profile_image{
+/* .profile_image{
     border: 2px solid #c0c0c0 ;
     
+} */
+
+.my_gere_card_2{
+    margin: 2% 2% 2% 2%  !important;
 }
+
+.ModelContent{
+    position: absolute;
+      top: 25%;
+      left: 35%;
+      right: 35%;
+      bottom: 25%;
+      border: 1px solid rgb(2, 73, 52);
+      background: #fff;
+      overflow: auto;
+      border-radius: 10px;
+      outline: none;
+}
+
+.cancel_icon{
+    color: rgb(2, 73, 52) !important;
+    margin: 0.5% 8% 2% 90%;
+  }

@@ -189,15 +189,22 @@ export function AccountBox(props) {
           
           setInterval(()=>{
             setSuccesfullySignin(false)
-          }, 3000
+          }, 1000
           )
           // window.location.href = "http://localhost:3000/home"
+          setTimeout(()=>{
           props.child_To_Parent_login(true)
+
+          },2000)
         
         }
         else {
           // alert("Incorrect fields")
           setEmailorPassError(true)
+          setTimeout(()=>{
+            setEmailorPassError(false)
+          }, 2000
+          )
         }
       } else {
         // console.log("No data available");
@@ -248,10 +255,11 @@ export function AccountBox(props) {
     var userId = getSemail.split("@")
     writeUserData(userId[0], getSname, getSemail, getSpassword);
     setSuccesfullySignup(true)
-    setInterval(()=>{
-      setSuccesfullySignup(false)
-    }, 3000
-    )
+    
+    // setInterval(()=>{
+      // setSuccesfullySignup(false)
+    // }, 3000
+    // )
 
   }
 

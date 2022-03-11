@@ -38,8 +38,9 @@ function Favourite({ heading }) {
   var getLemail =  localStorage.getItem("Lemail")
   var userId = getLemail.split("@")
   // Get Data of Books From Database
+  var items = [];
+
   function getData() {
-    var items = [];
       fire
         .firestore()
         .collection("Favourite_Books").doc(userId[0])
@@ -54,6 +55,7 @@ function Favourite({ heading }) {
                 .get().then((e)=>{
                      items.push(e.data())
                      console.log("ITEMSSSS",items)
+              setData([...data,...items])
                      
                 })
 

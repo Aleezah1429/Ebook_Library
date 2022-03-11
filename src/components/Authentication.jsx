@@ -29,6 +29,8 @@ function Authentication({child_To_Parent_Auth}) {
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
+        paddingBottom:"5%",
+        paddingTop:"3%",
       }}
     >
       <AccountBox child_To_Parent_login={child_To_Parent_3} />

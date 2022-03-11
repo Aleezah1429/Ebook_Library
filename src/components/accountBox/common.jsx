@@ -82,6 +82,7 @@ export const ErrorMsg = styled.p`
   font-weight: bold;
   text-decoration: none;
   margin: 0 4px;
+  margin-top:5px;
 `;
 
 export const SuccessMsg = styled.p`

@@ -12,62 +12,26 @@ function Home() {
   console.log("SDBSKDSKDSDLK", getLemail);
   var userIdList = getLemail.split("@");
   const userId = userIdList[0];
+  const lst = ["Action", "Fantacy", "Mystery", "Comedy", "Teenagers", "Science Fiction"]
   return (
     <>
-      <Card className="my_genre_card ">
-        {/* genre_card_container */}
-        <Row>
+         <Container>
+      <Row className="genra_greeting">WELCOME</Row>
+      <Row xs={1} sm={2} md={3} className="g-4">
+        {Array.from({ length: lst.length }).map((_, idx) => (
           <Col>
-            <Card.Img variant="top" src={test2} className="genre_card_image" />
+            <Card className="my_genre_card my_gere_card_2">
+                {/* genre_card_container */}
+                <Row>
+                    <Col ><Card.Img variant="top" src={test2} className="genre_card_image" /></Col>
+                    <Col className="genre_col_text">{lst[idx]}</Col>
+                </Row>
+            </Card>
           </Col>
-          <Col className="genre_col_text">Action</Col>
-        </Row>
-      </Card>
-      <Card className="my_genre_card ">
-        {/* genre_card_container */}
-        <Row>
-          <Col>
-            <Card.Img variant="top" src={test2} className="genre_card_image" />
-          </Col>
-          <Col className="genre_col_text">Fantacy</Col>
-        </Row>
-      </Card>
-      <Card className="my_genre_card ">
-        {/* genre_card_container */}
-        <Row>
-          <Col>
-            <Card.Img variant="top" src={test2} className="genre_card_image" />
-          </Col>
-          <Col className="genre_col_text">Detective and Mystery</Col>
-        </Row>
-      </Card>
-      <Card className="my_genre_card ">
-        {/* genre_card_container */}
-        <Row>
-          <Col>
-            <Card.Img variant="top" src={test2} className="genre_card_image" />
-          </Col>
-          <Col className="genre_col_text">Horror</Col>
-        </Row>
-      </Card>
-      <Card className="my_genre_card ">
-        {/* genre_card_container */}
-        <Row>
-          <Col>
-            <Card.Img variant="top" src={test2} className="genre_card_image" />
-          </Col>
-          <Col className="genre_col_text">Literary Fiction</Col>
-        </Row>
-      </Card>
-      <Card className="my_genre_card ">
-        {/* genre_card_container */}
-        <Row>
-          <Col>
-            <Card.Img variant="top" src={test2} className="genre_card_image" />
-          </Col>
-          <Col className="genre_col_text">Classics</Col>
-        </Row>
-      </Card>
+        ))}
+    
+      </Row>
+    </Container>
       <MyCard heading={"Sepecially made for " + userId} />
     </>
   );

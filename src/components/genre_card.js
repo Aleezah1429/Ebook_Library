@@ -12,8 +12,9 @@ function GenreCard() {
     const [genreData, setGenreData] = useState([]);
     var getLemail =  localStorage.getItem("Lemail")
     var userId = getLemail.split("@")
+    
     // Store collection of book details in firestore
-    const ref = fire.firestore().collection("Genre").doc(userId)
+    const ref = fire.firestore().collection("Genre").doc(userId[0])
 
     // Get Array of Genre From Database
     function getGenreData() {
@@ -36,7 +37,7 @@ function GenreCard() {
     return (
         <Container >
 
-            <Row className="genra_greeting">Good morning</Row>
+            <Row className="genra_greeting">Recommanded Books</Row>
             <Row>
                 <CardGroup className="genre_card_container">
                     {(genreData.map((i) => (

@@ -95,13 +95,15 @@ function GenreAsk() {
 
     // For save genre from Checkbox
     const SaveGenre = async (e) => {
-        // var getLemail = await localStorage.getItem("Lemail")
-        // var userId = getLemail.split("@")
+        // e.preventdefault()
+        var getLemail = await localStorage.getItem("Lemail")
+        var userId = getLemail.split("@")
         // Store genre of book  in firestore
-        fire.firestore().collection("Genre").doc("Hasnain").set({
+        fire.firestore().collection("Genre").doc(userId[0]).set({
             Favourite_Genres : [Action, Fantasy, Mystery, ScienceFiction, Comedy, Teenagers]
         })
-        console.log("fire",Action)
+        // window.location.href = "http://localhost:3001/home"
+        // console.log("fire",Action)
     }
 
 

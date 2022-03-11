@@ -3,119 +3,79 @@ import "../App.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, CardGroup, Card, Container, Row, Col, Modal } from 'react-bootstrap';
 import GenreCard from "./genre_card";
-import MyCard from "./card";
 import fire from "../firebase";
 import readme from "..//assets/img/readme_logo_icon.png";
 
 
-function Recommandation({ heading }) {
-
-    // States of book img and pdf show
-    const [image, setImage] = useState('');
-    const [UrlImg, setUrlImg] = useState('');
+function Recommandation() {
 
     // States for MODAL
     const [modalShow, setModalShow] = useState(false);
     const [rating, setRating] = useState(null);
 
-    // Store collection of book details in firestore
-    const ref = fire.firestore().collection("Books").doc("Book_1")
-
     // States for Book Data
     const [data, setData] = useState([]);
     const [loader, setLoader] = useState(true);
 
+
     // Get Data of Books From Database
-    function getData() {
-        ref.onSnapshot((querySnapshot) => {
-            const items = []
-            fire.firestore().collection("Books")
+    async function getData() {
+        var items = []
+        const myGenres = JSON.parse(localStorage.getItem("Genres"))
+
+        var getLemail = await localStorage.getItem("Lemail")
+        var userId = getLemail.split("@")
+
+
+        for (var i=0 ; i<myGenres.length; i++ ) {
+            await fire.firestore().collection("Books")
                 .get()
                 .then((querySnapshot) => {
                     if (!querySnapshot.empty) {
                         querySnapshot.forEach((doc) => {
-                            // console.log(doc.id, "=>", doc.data().Genre);
-                            const myGenres = JSON.parse(localStorage.getItem("Genres"))
-                            console.log("genres", myGenres)
-                            for (var i = 0; i < myGenres.length; i++) {
-                                console.log("GEN", myGenres[i])
-                                if (doc.data().Genre === myGenres[i]) {
-                                    console.log("Action Genre", doc.data())
-                                    items.push(doc.data())
-                                }
+                            console.log("HELO", doc.data().Genre);
+                            if (doc.data().Genre == myGenres[i]) {
+                                items.push(doc.data())
                             }
+                            console.log("items", items)
+
 
 
                         });
+
                     }
                 })
+            
                 .catch((error) => {
                     console.log(error);
-                });
-            setData(items)
-            setLoader(false)
-        })
+
+                    setLoader(false)
+                })
+        }
+        
+        setData(items)
     }
 
-    // Book upload
-    function BookShow() {
-
-        // Save url or download link
-        // const upload = () => {
-        //   if (image == null)
-        //     return;
-        //   setUrlImg("Getting Download Link...")
-
-        // Sending File to Firebase Storage
-        // storage.ref(`/images/${image.name}`).put(image)
-        // .on("state_changed", alert("success"), alert, () => {
-
-
-        // // Getting Link of Image
-        fire.storage().ref("Book_1").child("GFX_Mentor.jpg").getDownloadURL()
-            .then((url) => {
-                setUrlImg(url);
-                // console.log(url)
-            })
-
+    function OpenPdf(id, pdf) {
         // Getting Link of Pdf
-        // fire.storage().ref("Book_1").child("Aliza Ikram Resume.pdf").getDownloadURL()
-        //   .then((url) => {
-        //     setUrl(url);
-        //     console.log(url)
-        //   })
+        window.open(pdf, '_blank');
 
-
-        // });
-
-
-        // }
-    }
-
-    function OpenPdf(id,pdf){
-        // Getting Link of Pdf
-      window.location.href = pdf
-    
     }
     useEffect(() => {
         getData();
-        BookShow();
-        console.log(data)
+        console.log("sjbsxlsnxnslnxsdsbds", data)
     }, [])
 
-    // var getLemail = await localStorage.getItem("Lemail")
-    // var userId = getLemail.split("@")
-    const userId = "Aleezah"
     return (
         <div>
             <GenreCard />
             <Container>
                 <Container>
-                    <Row className="card_greeting">{heading}</Row>
+                    {/* <Row className="card_greeting">{heading}</Row> */}
                     <Row xs={1} sm={3} md={5} className="g-4">
                         {Array.from({ length: data.length }).map((_, idx) => (
                             <Col>
-                                <Card onClick={()=>OpenPdf(data[idx].id,data[idx].Pdf)} className="my_card" key={data[idx].id}>
+                                <Card onClick={() => OpenPdf(data[idx].id, data[idx].Pdf)} className="my_card" key={data[idx].id}>
                                     <Card.Img variant="top" src={data[idx].Image} className="card_image" />
                                     <Card.Img variant="top" src={readme} className="card_image_2" />
 
@@ -129,10 +89,7 @@ function Recommandation({ heading }) {
                                         <small className="text-muted my_card_text ">
                                             {data[idx].AuthorName}
                                             <span type="button"
-                                                // heart color will be ornge if it is present in database otherwise grey
-                                                className={`${data[idx].favorite ? "heartcolor_1" : "heartcolor_2"}`}
-                                            // Aleezah apply condition that if its click favourte will asssigne oppsite boolen values
-                                            // onClick={}
+                                               className={`${data[idx].favorite ? "heartcolor_1" : "heartcolor_2"}`}
                                             >
                                                 &hearts;
                                             </span>

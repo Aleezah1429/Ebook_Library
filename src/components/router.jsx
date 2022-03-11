@@ -16,6 +16,7 @@ import Authentication from "./Authentication";
 
 import "react-pro-sidebar/dist/css/styles.css";
 import "../App.css";
+// import GenreAsk from "./Genre_asking";
 
 function MyRouter() {
   const [margin, setMargin] = useState("my_layout_2");
@@ -43,6 +44,7 @@ function MyRouter() {
               <Route path="/search" element={<Search />} />
               <Route path="/favourite" element={<Favourite_Book />} />
               <Route path="/recommandation" element={<Recommandation />} />
+              {/* <Route path="/genreasking" element={<GenreAsk />} /> */}
             </Routes>
           </div>
         </>
