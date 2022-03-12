@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import fire from "../firebase";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, CardGroup, Card, Row, Col, Container } from 'react-bootstrap';
+import { CardGroup, Card, Row, Col, Container } from 'react-bootstrap';
 import test2 from "../assets/img/test_2.jpg";
 import "../App.css"
-import { FaRegHeart } from "react-icons/fa";
 
 function GenreCard() {
 
@@ -12,7 +11,6 @@ function GenreCard() {
     const [genreData, setGenreData] = useState([]);
     var getLemail =  localStorage.getItem("Lemail")
     var userId = getLemail.split("@")
-    // console.log("userID", userId[0])
 
     // Store collection of book details in firestore
     const ref = fire.firestore().collection("Genre").doc(userId[0])
@@ -22,7 +20,6 @@ function GenreCard() {
         ref.onSnapshot((querySnapshot) => {
             if (!querySnapshot.empty) {
                 localStorage.setItem("Genres",JSON.stringify(querySnapshot.data().Favourite_Genres))
-                    // console.log(querySnapshot.id, "=>", querySnapshot.data().Favourite_Genres);
                     setGenreData(querySnapshot.data().Favourite_Genres)
              
             }})}
@@ -31,7 +28,6 @@ function GenreCard() {
 
     useEffect(() => {
         getGenreData();
-        // console.log(data)
     }, [])
 
 
@@ -44,7 +40,6 @@ function GenreCard() {
                     {(genreData.map((i) => (
                     i != "" ?
                             <Card className="my_genre_card">
-                                {/* {console.log("data", i)} */}
 
                                 <Row>
                                     <Col ><Card.Img variant="top" src={test2} className="genre_card_image" /></Col>
