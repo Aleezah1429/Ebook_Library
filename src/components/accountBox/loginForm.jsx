@@ -14,7 +14,7 @@ import { Marginer } from "../marginer";
 import { AccountContext } from "./accountContext";
 
 // For Alert
-import { Alert } from 'react-bootstrap'
+// import { Alert } from 'react-bootstrap'
 
 export default function LoginForm(props) {
 

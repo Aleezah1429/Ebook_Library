@@ -42,7 +42,7 @@ export function SignupForm(props) {
   const [Teenagers, setTeenagers] = useState("")
 
   // Modal States
-  let subtitle;
+  // let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   // States
@@ -80,34 +80,34 @@ export function SignupForm(props) {
   // Store collection of book details in firestore
   // const ref = fire.firestore().collection("Books").doc("Book_1")
 
-  const [data, setData] = useState([]);
-  const [loader, setLoader] = useState(true);
+  // const [data, setData] = useState([]);
+  // const [loader, setLoader] = useState(true);
 
-  // Get Data of Books From Database
-  function getData() {
-    // ref.onSnapshot((querySnapshot) => {
-      const items = []
-      fire.firestore().collection("Books")
-        .get()
-        .then((querySnapshot) => {
-          if (!querySnapshot.empty) {
-            querySnapshot.forEach((doc) => {
-              // console.log(doc.id, "=>", doc.data().Genre);
-              // if (doc.data().Genre == "Action") {
-              //   console.log("Action Genre", doc.data())
-              // }
+  // // Get Data of Books From Database
+  // function getData() {
+  //   // ref.onSnapshot((querySnapshot) => {
+  //     const items = []
+  //     fire.firestore().collection("Books")
+  //       .get()
+  //       .then((querySnapshot) => {
+  //         if (!querySnapshot.empty) {
+  //           querySnapshot.forEach((doc) => {
+  //             // console.log(doc.id, "=>", doc.data().Genre);
+  //             // if (doc.data().Genre == "Action") {
+  //             //   console.log("Action Genre", doc.data())
+  //             // }
 
-              items.push(doc.data())
-            });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      setData(items)
-      setLoader(false)
-    // })
-  }
+  //             items.push(doc.data())
+  //           });
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //     setData(items)
+  //     setLoader(false)
+  //   // })
+  // }
 
   // For get genre from Action
   const handleAction = (e) => {
@@ -146,18 +146,22 @@ export function SignupForm(props) {
   }
 
 
- 
-  var getLemail =  localStorage.getItem("Semail")
+
+  var getLemail = localStorage.getItem("Semail")
   var userId = getLemail.split("@")
 
   // For save genre from Checkbox
   const SaveGenre = () => {
 
     // Store genre of book  in firestore
-    fire.firestore().collection("Genre").doc(userId[0]).update({
+    fire.firestore().collection("Genre").doc(userId[0]).set({
       Favourite_Genres: [Action, Fantasy, Mystery, ScienceFiction, Comedy, Teenagers]
-    })
-    
+    }).then(
+      ()=>{
+        window.location.reload();
+      }
+    )
+
   }
 
 
@@ -170,11 +174,13 @@ export function SignupForm(props) {
   // function afterOpenModal() {
   //   // references are now sync'd and can be accessed.
   //   // subtitle.style.color = '#f00';
+  //   console.log("After Modal CALLLLLLLLEEEEDDDDDD")
+
   // }
 
   function closeModal() {
     console.log("CALLLLLLLLEEEEDDDDDD")
-    // setIsOpen(false);
+    setIsOpen(false);
   }
 
   // useEffect(() => {
@@ -188,12 +194,12 @@ export function SignupForm(props) {
 
   // }, [Action, Fantasy, Mystery, Comedy, ScienceFiction, Teenagers, Comedy])
 
-useEffect(()=>{
-  if(successfullySignup){
-    openModal()
-  }
+  useEffect(() => {
+    if (successfullySignup) {
+      openModal()
+    }
 
-},[successfullySignup])
+  }, [successfullySignup])
 
   return (
     <>
@@ -217,11 +223,11 @@ useEffect(()=>{
           :
           null}
         <Marginer direction="vertical" margin={10} />
-        <SubmitButton  onClick={ShandleSignup}>Signup</SubmitButton>
+        <SubmitButton onClick={ShandleSignup}>Signup</SubmitButton>
         <Marginer direction="vertical" margin="1em" />
         <MutedLink href="#">
           Already have an account?
-          <BoldLink  onClick={()=>switchToSignin}>
+          <BoldLink onClick={switchToSignin}>
             Signin
           </BoldLink>
         </MutedLink>
@@ -235,12 +241,12 @@ useEffect(()=>{
       <Modal
         isOpen={modalIsOpen}
         // onAfterOpen={afterOpenModal}
-        onRequestClose={()=>closeModal()}
+        onRequestClose={() => closeModal()}
         style={customStyles}
         className="ModelContent"
       // contentLabel="Example Modal"
       >
-        <h3 className='cancel_icon' onClick={()=>closeModal()}><MdCancel /></h3>
+        <h3 className='cancel_icon' onClick={() => closeModal()}><MdCancel /></h3>
 
         <div class="container d-flex">
           <div class="profile_card p-3 py-4 profile_div">
@@ -294,9 +300,9 @@ useEffect(()=>{
                     </Row>
                   </div>
                 </div>
-                <div class="profile mt-5"> <button class="profile_button px-5" onClick={() => SaveGenre()}>Save</button> </div>
               </div>
             </form>
+            <div class="profile mt-5"> <button class="profile_button px-5" onClick={() => SaveGenre()}>Save</button> </div>
           </div>
         </div >
 

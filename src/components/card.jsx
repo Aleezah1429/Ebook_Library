@@ -86,7 +86,9 @@ function MyCard() {
       //    const newEntry = {IdBook,name}
       //     // singleObj.push(JSON.stringify(newEntry))
       arr.push(JSON.stringify(singleObj))
-      console.log("arr", arr)
+      console.log("name", name)
+
+      // Set on Firestore
       fire
         .firestore()
         .collection("Favourite_Books")
@@ -94,7 +96,9 @@ function MyCard() {
         .set(
           {
             Books: arr
-          })
+          }).then(
+            alert(`${name} Added to Favourite`)
+          )
 
     })
   }

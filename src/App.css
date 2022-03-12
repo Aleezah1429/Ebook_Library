@@ -407,9 +407,6 @@ margin: 5% 0% 3% 3% !important;
     background: rgb(255, 166, 0);
     box-shadow: 2p 2px 5px black;
     margin-top: -10% !important;
-   
-    /* background: #000; */
-    /* box-shadow: 28px 28px 57px #933da2, -28px -28px 57px #c351d6 */ 
 }
 .profile_button:hover{
     background: linear-gradient(45deg, rgb(0, 27, 19), black);
@@ -431,10 +428,12 @@ margin: 5% 0% 3% 3% !important;
     color: white;
     text-shadow: 2px 2px 5px black;
 }
-/* .profile_image{
-    border: 2px solid #c0c0c0 ;
-    
-} */
+
+.profile{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
 
 .my_gere_card_2{
     margin: 2% 2% 2% 2%  !important;
