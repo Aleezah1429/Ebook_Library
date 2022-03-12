@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from "react";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,7 +10,6 @@ import {
   Col,
   Modal,
 } from "react-bootstrap";
-import { FaRegHeart } from "react-icons/fa";
 import fire from "../firebase";
 import readme from "..//assets/img/readme_logo_icon.png";
 
@@ -45,7 +42,6 @@ function MyCard() {
         .then((querySnapshot) => {
           if (!querySnapshot.empty) {
             querySnapshot.forEach((doc) => {
-              // console.log(doc.id, "=>", doc.data());
               items.push(doc.data());
             });
           }
@@ -55,36 +51,26 @@ function MyCard() {
         .catch((error) => {
           console.log(error);
         });
-      // setLoader(false)
     });
     console.log(data);
   }, []);
 
   function OpenPdf(id, pdf) {
-    // Getting Link of Pdf
     window.open(pdf, '_blank');
-
-
-
-
   }
+
+  // Add to favourite
   const AddToFavourites = (id, name) => {
     let arr;
-    // console.log("LLLLBJKBJKBJKBJ",id)
     fire.firestore().collection("Favourite_Books").doc(userId[0]).get().then((snap) => {
       if (snap.data() == undefined) {
         arr = []
       }
       else {
         arr = snap.data().Books
-        // console.log("OOPOPOPOPO", snap.data().Books)
       }
-      // const arr = snap.data().Books
-      // const name = snap.data().BookName
 
       const singleObj = { id, name }
-      //    const newEntry = {IdBook,name}
-      //     // singleObj.push(JSON.stringify(newEntry))
       arr.push(JSON.stringify(singleObj))
       console.log("name", name)
 
@@ -105,7 +91,6 @@ function MyCard() {
 
   const GiveRating = (rate) => {
     let objs;
-    // console.log("rating", rating)
     setRating(rate)
     fire.firestore().collection("Feedback").doc(userId[0]).get().then((snap) => {
       if (snap.data() == undefined) {
@@ -132,15 +117,15 @@ function MyCard() {
     setBookId(id)
     setModalShow(condition)
   }
+  
   return (
     <Container>
       <Container>
         <Row xs={1} sm={3} md={5} className="g-4">
           {console.log("MY", data)}
           {Array.from({ length: data.length }).map((_, idx) => (
+
             <Col>
-              {/* {setisFavourite("heartcolor_1")} */}
-              {/* {console.log("DIV", data[idx])} */}
 
               <Card className="my_card" key={data[idx].id}>
                 <Card.Img onClick={() => OpenPdf(data[idx].id, data[idx].Pdf)}
@@ -168,15 +153,9 @@ function MyCard() {
                     <span
                       type="button"
                       onClick={() => {
-                        // isFavourite == "heartcolor_2"
-                        //   ? setisFavourite("heartcolor_1")
-                        //   : setisFavourite("heartcolor_2");
                         AddToFavourites(data[idx].id, data[idx].BookName)
                       }}
-                      // heart color will be ornge if it is present in database otherwise grey
                       className={isFavourite}
-                    // Aleezah apply condition that if its click favourte will asssigne oppsite boolen values
-                    // onClick={}
                     >
                       &hearts;
                     </span>
