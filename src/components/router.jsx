@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 //Router
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+
 //sidebar css from react-pro-sidebar module
 import "react-pro-sidebar/dist/css/styles.css";
 
@@ -16,7 +17,6 @@ import Authentication from "./Authentication";
 
 import "react-pro-sidebar/dist/css/styles.css";
 import "../App.css";
-// import GenreAsk from "./Genre_asking";
 
 function MyRouter() {
   const [margin, setMargin] = useState("my_layout_2");
@@ -44,24 +44,12 @@ function MyRouter() {
               <Route path="/search" element={<Search />} />
               <Route path="/favourite" element={<Favourite_Book />} />
               <Route path="/recommandation" element={<Recommandation />} />
-              {/* <Route path="/genreasking" element={<GenreAsk />} /> */}
             </Routes>
           </div>
         </>
        : 
         <Authentication child_To_Parent_Auth={child_To_Parent_2} />
       }
-       {/* <Sidenav childToParent={childToParent} />
-          <div className={margin}>
-            <Routes>
-              <Route path="/" element={<Authentication />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/search" element={<Search />} />
-              <Route path="/favourite" element={<Favourite_Book />} />
-              <Route path="/recommandation" element={<Recommandation />} />
-            </Routes>
-          </div> */}
     </BrowserRouter>
   );
 }
