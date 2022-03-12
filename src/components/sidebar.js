@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 //Router
-// import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 //react pro sidebar components
@@ -68,7 +67,6 @@ function Sidenav({childToParent}) {
                             <MenuItem icon={<FaSearch />}><Link to="/search">Search</Link></MenuItem>
                             <MenuItem icon={<FaRegHeart />}><Link to="/favourite">Favourite</Link></MenuItem>
                             <MenuItem icon={<FiList />}><Link to="/recommandation">Recommandation</Link></MenuItem>
-                            {/* <MenuItem icon={<FiList />}><Link to="/genreasking">Genre Asking</Link></MenuItem> */}
                         </Menu>
                     </SidebarContent>
                     <SidebarFooter>
