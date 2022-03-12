@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { AccountBox } from "../components/accountBox";
 import background from "../assets/img/bg.jpg";
-import Sidenav from "../components/sidebar";
-import Router from "../components/router";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -16,7 +14,6 @@ const AppContainer = styled.div`
 `;
 
 function Authentication({child_To_Parent_Auth}) {
-  const [allowAuth, setAllowAuth] = useState(false);
 
   const child_To_Parent_3 = (childdata) => {
     child_To_Parent_Auth(childdata);
@@ -34,7 +31,6 @@ function Authentication({child_To_Parent_Auth}) {
       }}
     >
       <AccountBox child_To_Parent_login={child_To_Parent_3} />
-      {/* <AccountBox /> */}
     </AppContainer>
   );
 }
