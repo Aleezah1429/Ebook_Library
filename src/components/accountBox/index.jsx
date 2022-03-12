@@ -8,7 +8,6 @@ import { SignupForm } from "./signupForm";
 
 // Firebase Database
 import { getDatabase, ref, set, child, get } from "firebase/database";
-import MyRouter from "../router";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -114,8 +113,7 @@ const expandingTransition = {
 export function AccountBox(props) {
 
 
-  // Auth
-  // const [user, setUser] = useState("");
+  // Authentication States
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -152,25 +150,6 @@ export function AccountBox(props) {
 
   const contextValue = { switchToSignup, switchToSignin };
 
-  // Auth
-  // const clearInputs = () => {
-  //   setEmail('');
-  //   setPassword('');
-  // }
-
-  // const clearErrors = () => {
-  //   setEmailError('');
-  //   setPasswordError('');
-  // }
-
-  // function CallRouter(){
-  //   console.log("CALLING")
-  //   return(
-  //   <div>
-  //   <MyRouter/>
-  //   </div>
-  //   )
-  // }
 
   const handleLogin = async () => {
     var getLemail = await localStorage.getItem("Lemail")
@@ -184,14 +163,12 @@ export function AccountBox(props) {
       if (snapshot.exists()) {
         console.log("loginSnap", snapshot.val());
         if (getLemail == snapshot.val().email && getLpassword == snapshot.val().password) {
-          // alert("Successfully Signin")
           setSuccesfullySignin(true)
           
           setInterval(()=>{
             setSuccesfullySignin(false)
           }, 1000
           )
-          // window.location.href = "http://localhost:3000/home"
           setTimeout(()=>{
           props.child_To_Parent_login(true)
 
@@ -199,7 +176,6 @@ export function AccountBox(props) {
         
         }
         else {
-          // alert("Incorrect fields")
           setEmailorPassError(true)
           setTimeout(()=>{
             setEmailorPassError(false)
@@ -207,31 +183,12 @@ export function AccountBox(props) {
           )
         }
       } else {
-        // console.log("No data available");
-        // alert("Please Signup first");
         setsignupError(true)
       }
     }).catch((error) => {
       console.error(error);
     });
 
-    // console.log("LLLL",email,password)
-    // clearErrors();
-    // fire
-    //   .auth()
-    //   .signIntWithEmailAndPassword(email, password)
-    //   .catch((err) => {
-    //     switch (err.code) {
-    //       case "auth/invalid-email":
-    //       case "auth/user-disabled":
-    //       case "auth/user-not-found":
-    //         setEmailError(err.message);
-    //         break;
-    //       case "auth/wrong-password":
-    //         setPasswordError(err.message);
-    //         break;
-    //     }
-    //   });
   };
 
   // Firebase Database Write
@@ -241,7 +198,6 @@ export function AccountBox(props) {
       name: name,
       email: email,
       password: password
-      // profile_picture: imageUrl
     });
   }
 
@@ -255,44 +211,12 @@ export function AccountBox(props) {
     var userId = getSemail.split("@")
     writeUserData(userId[0], getSname, getSemail, getSpassword);
     setSuccesfullySignup(true)
-    
-    // setInterval(()=>{
-      // setSuccesfullySignup(false)
-    // }, 3000
-    // )
-
   }
-
-  const handleLogout = async () => {
-      await localStorage.setItem("Lemail", "")
-      await localStorage.setItem("Lpassword", "")
-     
-    
-  }
-
-  // const authListener = () => {
-  //   fire.auth().onAuthStateChanged((user) => {
-  //     if (user) {
-  //       clearInputs();
-  //       setUser(user);
-  //     }
-  //     else {
-  //       setUser("");
-  //     }
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   authListener();
-  // }, [])
 
   // Login
   const Login = () => {
     {
       return (
-        // user ?
-        //   <Hero handleLogout={handleLogout} />
-        //   :
         <LoginForm
           email={email}
           setEmail={setEmail}
@@ -312,10 +236,6 @@ export function AccountBox(props) {
   const Signup = () => {
     return (
       <div>
-        {/* {console.log("Name",name)} */}
-        {/* {user ?
-          <Hero handleLogout={handleLogout} />
-          : */}
         <SignupForm
           name={name}
           setName={setName}
@@ -328,22 +248,9 @@ export function AccountBox(props) {
           emailorPassError={emailorPassError}
           successfullySignup={successfullySignup}
         />
-        {/* } */}
       </div>
     );
   }
-
-  // Firebase Database Read
-  // const dbRef = ref(getDatabase());
-  // get(child(dbRef, `users/${email}`)).then((snapshot) => {
-  //   if (snapshot.exists()) {
-  //     console.log(snapshot.val());
-  //   } else {
-  //     console.log("No data available");
-  //   }
-  // }).catch((error) => {
-  //   console.error(error);
-  // });
 
 
 
@@ -371,7 +278,6 @@ export function AccountBox(props) {
               <SmallText>Please sign-up to continue!</SmallText>
             </HeaderContainer>
           )}
-          {/* {console.log("email",email)} */}
         </TopContainer>
         <InnerContainer>
           {active === "signin" && <Login />}
