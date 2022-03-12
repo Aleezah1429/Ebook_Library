@@ -17,6 +17,7 @@ import { GiAbstract050 } from "react-icons/gi";
 import "react-pro-sidebar/dist/css/styles.css";
 
 function Sidenav({childToParent}) {
+
     const [myHeading, setmyHeading] = useState("");
     const [myMargin, setMargin] = useState("my_layout_2");
     const [data, setdata] = useState(false)
@@ -30,6 +31,13 @@ function Sidenav({childToParent}) {
         menuCollapse ? setMargin("my_layout_1") : setMargin("my_layout_2");
         childToParent(myMargin);
     };
+
+    // LOGOUT
+    const handleLogout = async () => {
+        await localStorage.setItem("Lemail", "")
+        await localStorage.setItem("Lpassword", "")
+        window.location.reload()
+    }
     
     return (
         <div className="main_sidebar">
@@ -64,9 +72,9 @@ function Sidenav({childToParent}) {
                         </Menu>
                     </SidebarContent>
                     <SidebarFooter>
-                        {/* <Menu iconShape="square">
-                            <MenuItem icon={<FiLogOut />}><Link to="/"> Log Out </Link></MenuItem>
-                        </Menu> */}
+                        <Menu iconShape="square">
+                            <MenuItem icon={<FiLogOut />} onClick={handleLogout}> Log Out </MenuItem>
+                        </Menu>
                     </SidebarFooter>
                 </ProSidebar>
             </div>
