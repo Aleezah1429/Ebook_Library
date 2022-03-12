@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from "react";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,20 +10,15 @@ import {
   Col,
   Modal,
 } from "react-bootstrap";
-import { FaRegHeart } from "react-icons/fa";
 import fire from "../firebase";
 import readme from "..//assets/img/readme_logo_icon.png";
 
-function Favourite({ heading }) {
+function Favourite() {
   // States for MODAL
   const [modalShow, setModalShow] = useState(false);
   const [rating, setRating] = useState(null);
 
-  // Store collection of book details in firestore
-  const ref = fire.firestore().collection("Books").doc("Book_1");
-
   const [data, setData] = useState([]);
-  const [loader, setLoader] = useState(true);
 
   // States of book img and pdf show
   const [image, setImage] = useState("");
@@ -37,6 +30,7 @@ function Favourite({ heading }) {
 
   var getLemail =  localStorage.getItem("Lemail")
   var userId = getLemail.split("@")
+
   // Get Data of Books From Database
   var items = [];
 
@@ -46,7 +40,6 @@ function Favourite({ heading }) {
         .collection("Favourite_Books").doc(userId[0])
         .get()
         .then((querySnapshot) => {
-            // console.log("QUERYYYYY",querySnapshot.data().Books);
             querySnapshot.data().Books.forEach((doc) => {
                 var newId = JSON.parse(doc).id
                 fire
@@ -60,20 +53,13 @@ function Favourite({ heading }) {
                 })
 
               });
-              
-
-            //   console.log("ITEMS",items);
-            
-
+    
           })
           
 
         .catch((error) => {
           console.log(error);
         })
-
-        
-      // setLoader(false)
   }
 
   useEffect(() => {
@@ -81,87 +67,40 @@ function Favourite({ heading }) {
 
   }, []);
 
-  // Book upload
-  function BookShow() {
-    // Save url or download link
-    // const upload = () => {
-    //   if (image == null)
-    //     return;
-    //   setUrlImg("Getting Download Link...")
 
-    // Sending File to Firebase Storage
-    // storage.ref(`/images/${image.name}`).put(image)
-    // .on("state_changed", alert("success"), alert, () => {
-
-    // // Getting Link of Image
-    fire
-      .storage()
-      .ref("Book_1")
-      .child("GFX_Mentor.jpg")
-      .getDownloadURL()
-      .then((url) => {
-        setUrlImg(url);
-        // console.log(url)
-      });
-
-
-
-    
-    // }
-  }
-
-  function OpenPdf(id,pdf){
+  function OpenPdf(id, pdf) {
     // Getting Link of Pdf
-  window.location.href = pdf
+    window.open(pdf, '_blank');
 
 
 
-}
-  const AddToFavourites=(id,name)=>{
-    // console.log("LLLLBJKBJKBJKBJ",id)
-    // fire.firestore().collection("Favourite_Books").doc("Aleezah").get().then((snap)=>{
-    //   console.log("OOPOPOPOPO",snap.data().Books)
-    //   const arr = snap.data().Books
-    //   // const name = snap.data().BookName
-      
-    //       const singleObj = {id,name}
-    //   //    const newEntry = {IdBook,name}
-    //   //     // singleObj.push(JSON.stringify(newEntry))
-    //   arr.push(JSON.stringify(singleObj))
-    //   console.log("AKDKDNKSNDSDNND",arr)
-    //       fire
-    //       .firestore()
-    //       .collection("Favourite_Books")
-    //       .doc("Aleezah")
-    //       .update(
-    //         {Books:arr
-    //       })
 
-    // })
-    
   }
 
-  const GiveRating=(rate)=>{
-        
-        setRating(rate)
-        fire.firestore().collection("Feedback").doc("Aleezah").get().then((snap)=>{
-          const objs = snap.data().ratings
-          // const singleObj = {}
-         const newEntry = {BookId,rate}
-          objs.push(JSON.stringify(newEntry))
-          fire
-          .firestore()
-          .collection("Feedback")
-          .doc("Aleezah")
-          .update(
-            {ratings:objs
+  const GiveRating = (rate) => {
+    let objs;
+    setRating(rate)
+    fire.firestore().collection("Feedback").doc(userId[0]).get().then((snap) => {
+      if (snap.data() == undefined) {
+        objs = []
+      }
+      else {
+        objs = snap.data().ratings
+      }
+      const newEntry = { BookId, rate }
+      objs.push(JSON.stringify(newEntry))
+      fire
+        .firestore()
+        .collection("Feedback")
+        .doc(userId[0])
+        .set(
+          {
+            ratings: objs
           })
-
-        })
-       
-
+    })
 
   }
+
 
   function ShowModal(condition,id){
     setBookId(id)
@@ -175,9 +114,6 @@ function Favourite({ heading }) {
           {console.log("MYYYY", data)}
           {Array.from({ length: data.length }).map((_, idx) => (
             <Col>
-            {/* {setisFavourite("heartcolor_1")} */}
-              {/* {console.log("DIV", data[idx])} */}
-
               <Card  className="my_card" key={data[idx].id}>
                 <Card.Img onClick={()=>OpenPdf(data[idx].id,data[idx].Pdf)}
                   variant="top"
@@ -203,16 +139,7 @@ function Favourite({ heading }) {
                     {data[idx].AuthorName}
                     <span
                       type="button"
-                      onClick={() => {
-                        // isFavourite == "heartcolor_2"
-                        //   ? setisFavourite("heartcolor_1")
-                        //   : setisFavourite("heartcolor_2");
-                        AddToFavourites(data[idx].id,data[idx].BookName)
-                      }}
-                      // heart color will be ornge if it is present in database otherwise grey
-                      className={isFavourite}
-                      // Aleezah apply condition that if its click favourte will asssigne oppsite boolen values
-                      // onClick={}
+                       className={isFavourite}
                     >
                       &hearts;
                     </span>
