@@ -42,7 +42,6 @@ export function SignupForm(props) {
   const [Teenagers, setTeenagers] = useState("")
 
   // Modal States
-  // let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   // States
@@ -75,39 +74,6 @@ export function SignupForm(props) {
 
 
   }
-
-  // Genre Asking
-  // Store collection of book details in firestore
-  // const ref = fire.firestore().collection("Books").doc("Book_1")
-
-  // const [data, setData] = useState([]);
-  // const [loader, setLoader] = useState(true);
-
-  // // Get Data of Books From Database
-  // function getData() {
-  //   // ref.onSnapshot((querySnapshot) => {
-  //     const items = []
-  //     fire.firestore().collection("Books")
-  //       .get()
-  //       .then((querySnapshot) => {
-  //         if (!querySnapshot.empty) {
-  //           querySnapshot.forEach((doc) => {
-  //             // console.log(doc.id, "=>", doc.data().Genre);
-  //             // if (doc.data().Genre == "Action") {
-  //             //   console.log("Action Genre", doc.data())
-  //             // }
-
-  //             items.push(doc.data())
-  //           });
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //     setData(items)
-  //     setLoader(false)
-  //   // })
-  // }
 
   // For get genre from Action
   const handleAction = (e) => {
@@ -171,28 +137,11 @@ export function SignupForm(props) {
     setIsOpen(true);
   }
 
-  // function afterOpenModal() {
-  //   // references are now sync'd and can be accessed.
-  //   // subtitle.style.color = '#f00';
-  //   console.log("After Modal CALLLLLLLLEEEEDDDDDD")
-
-  // }
 
   function closeModal() {
     console.log("CALLLLLLLLEEEEDDDDDD")
     setIsOpen(false);
   }
-
-  // useEffect(() => {
-  //   getData();
-  //   console.log(Action)
-  //   console.log(Fantasy)
-  //   console.log(Mystery)
-  //   console.log(ScienceFiction)
-  //   console.log(Teenagers)
-  //   console.log(Comedy)
-
-  // }, [Action, Fantasy, Mystery, Comedy, ScienceFiction, Teenagers, Comedy])
 
   useEffect(() => {
     if (successfullySignup) {
@@ -205,14 +154,9 @@ export function SignupForm(props) {
     <>
       <BoxContainer>
         <FormContainer>
-          {/* {console.log(Semail)}
-        {console.log(Sname)}
-        {console.log(Spassword)} */}
           <Input type="text" placeholder="Full Name" value={Sname} onChange={(e) => setSName(e.target.value)} />
           <Input type="email" placeholder="Email" value={Semail} onChange={(e) => setSEmail(e.target.value)} />
-          {/* <ErrorMsg><p>{emailError}</p></ErrorMsg> */}
           <Input type="password" placeholder="Password" value={Spassword} onChange={(e) => setSPassword(e.target.value)} />
-          {/* <ErrorMsg><p>{passwordError}</p></ErrorMsg> */}
         </FormContainer>
         {emailorPassError ?
           <ErrorMsg><p>Please Enter the correct Email or Password</p></ErrorMsg>
@@ -240,11 +184,9 @@ export function SignupForm(props) {
       {/* Modal */}
       <Modal
         isOpen={modalIsOpen}
-        // onAfterOpen={afterOpenModal}
         onRequestClose={() => closeModal()}
         style={customStyles}
         className="ModelContent"
-      // contentLabel="Example Modal"
       >
         <h3 className='cancel_icon' onClick={() => closeModal()}><MdCancel /></h3>
 
