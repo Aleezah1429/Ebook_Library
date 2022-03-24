@@ -71,6 +71,11 @@ The User has to click on “Cards” to read the book. Every card shows its rati
 
 ![image](https://user-images.githubusercontent.com/64039135/159941262-88573179-68b2-463f-85d7-969037d850ff.png)
 
+User can also give rating any book.
+
+![image](https://user-images.githubusercontent.com/64039135/159945210-070011f7-13df-4a8c-bed1-4af3d054f1c2.png)
+
+
 User can easily read the book in pdf form and also download the book.
 
 ![image](https://user-images.githubusercontent.com/64039135/159941597-668c4cf8-d81a-409b-a1f2-b95ec154308b.png)
