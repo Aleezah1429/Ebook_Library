@@ -42,7 +42,10 @@ Sidebar has 5 options (Home, My Profile, Search, and My Favorite Books, Recommen
 2.2. 	**Layout**
 
 This is the part other than the sidebar. This Shows
+
+
         *Greeting to Users
+        
         *Different genre of Books
 
 3.	  **Profile Page**
