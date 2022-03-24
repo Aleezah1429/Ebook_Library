@@ -1,9 +1,11 @@
-#EBOOK LIBRARY
+# EBOOK LIBRARY
 
 ## INTRODUCTION
+
 An eBook library, sometimes called an e-Library, is a collection of electronic books. Similar to a library made of physical books, an eBook library can exist as a person’s own collection of electronic texts or as a public library that allows users to read electronic versions of books for a period of time.
 
 ##TECHNOLOGY USED
+
 Ebook Library built on **React JS** , **React Bootstrap**  and **Firestore, Firebase Storage and Firebase Realtime Database**.
 
 ## DESCRIPTION
@@ -30,10 +32,14 @@ If the user filled all the required fields correctly and press the signup or sig
 
 ![image](https://user-images.githubusercontent.com/64039135/159794027-c8b23e2a-66dc-4f7a-b624-6d2ea2cecf5b.PNG)
 This is the main navigation page that consists of
+
+
 2.1. 	**Sidebar**
+
 Sidebar has 5 options (Home, My Profile, Search, and My Favorite Books, Recommendation and logout). When the user clicks on any option it redirects to the respective page.
 
 2.2. 	**Layout**
+
 This is the part other than the sidebar. This Shows
         *Greeting to Users
         *Different genre of Books
