@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+#EBOOK LIBRARY
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## INTRODUCTION
+An eBook library, sometimes called an e-Library, is a collection of electronic books. Similar to a library made of physical books, an eBook library can exist as a person’s own collection of electronic texts or as a public library that allows users to read electronic versions of books for a period of time.
 
-## Available Scripts
+##TECHNOLOGY USED
+Ebook Library built on **React JS** , **React Bootstrap**  and **Firestore, Firebase Storage and Firebase Realtime Database**.
 
-In the project directory, you can run:
+## DESCRIPTION
 
-### `npm start`
+1.	**Authentication Page**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This screen shows the sign in and signup modal. The authentication page allows users to log in with a username, email, and password.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+**SIGN IN**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image](https://user-images.githubusercontent.com/64039135/159670581-7bb78db8-ee57-4e44-b88b-10018963db85.PNG)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**SIGN UP**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+![image](https://user-images.githubusercontent.com/64039135/159793016-5f7c50ac-3f44-40b9-93f2-022fb799520f.PNG)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+If the user filled all the required fields correctly and press the signup or sign in button so, user successfully login or signup and easily redirect the home screen.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2.	**Home Page**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![image](https://user-images.githubusercontent.com/64039135/159794027-c8b23e2a-66dc-4f7a-b624-6d2ea2cecf5b.PNG)
+This is the main navigation page that consists of
+2.1. 	**Sidebar**
+Sidebar has 5 options (Home, My Profile, Search, and My Favorite Books, Recommendation and logout). When the user clicks on any option it redirects to the respective page.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+2.2. 	**Layout**
+This is the part other than the sidebar. This Shows
+        *Greeting to Users
+        *Different genre of Books
 
-## Learn More
+3.	  **Profile Page**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The User can view to his/her personal information and genres which he/she selected to read the specific genre book.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image](https://user-images.githubusercontent.com/64039135/159937262-2fac41dc-5895-4414-b563-c513ac12c5ca.png)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+4.	**Search Page**
 
-### Analyzing the Bundle Size
+The user enters the book name to find the book he wants to read in the search bar. After clicking on the search button, he can see the books which he can easily access or read the book.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![image](https://user-images.githubusercontent.com/64039135/159938278-d53d86ac-c18c-4a8b-a0cd-41150823266f.png)
