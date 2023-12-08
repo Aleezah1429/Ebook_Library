@@ -72,8 +72,6 @@ The User has to click on “My Favorite” on the side navigation bar to access 
 
 The User has to click on “Cards” to read the book. Every card shows its rating also.
 
-![image](https://user-images.githubusercontent.com/64039135/159941262-88573179-68b2-463f-85d7-969037d850ff.png)
-
 User can also give rating any book.
 
 ![image](https://user-images.githubusercontent.com/64039135/159945210-070011f7-13df-4a8c-bed1-4af3d054f1c2.png)
